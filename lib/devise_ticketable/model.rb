@@ -46,7 +46,7 @@ module Devise
           # set timestamp and binary string for timestamp and ip packed together
           timestamp  = Time.now.to_i
           ip_address = options[:ignore_ip] ? '0.0.0.0' : request.remote_ip
-          ip_timestamp = [ip2long(ip_address), timestamp].pack("NN")
+          ip_timestamp = [ip2long(ip_address), timestamp].pack("NN").force_encoding('UTF-8')
 
           # creating the cookie signature
           digest0 = Digest::MD5.hexdigest(ip_timestamp + get_secret_key + options[:user] + "\0" + options[:token_list] + "\0" + options[:user_data])
