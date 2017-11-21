@@ -26,6 +26,9 @@ module Devise
 
         # set domain for cookie, if wanted
         cookie_data[:domain] = self.class.auth_tkt_domain if self.class.auth_tkt_domain
+        
+        # set http_only for cookie, if wanted
+        cookie_data[:httponly] = self.class.auth_tkt_http_only if self.class.auth_tkt_http_only
 
         # return signed cookie
         cookie_data
