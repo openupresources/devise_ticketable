@@ -49,8 +49,8 @@ module Devise
           ip_timestamp = [ip2long(ip_address), timestamp].pack("NN")
 
           # creating the cookie signature
-          digest0 = Digest::MD5.hexdigest(ip_timestamp + get_secret_key + options[:user] + "\0" + options[:token_list] + "\0" + options[:user_data])
-          digest  = Digest::MD5.hexdigest(digest0 + get_secret_key)
+          digest0 = get_digest.hexdigest(ip_timestamp + get_secret_key + options[:user] + "\0" + options[:token_list] + "\0" + options[:user_data])
+          digest  = get_digest.hexdigest(digest0 + get_secret_key)
 
           # concatenating signature, timestamp and payload
           cookie = digest + timestamp.to_s(16) + options[:user] + '!' +
@@ -80,6 +80,10 @@ module Devise
         # returns the shared secret string used to sign the cookie
         def get_secret_key
           self.class.auth_tkt_secret
+        end
+
+        def get_digest
+          self.class.auth_tkt_digest || Digest::MD5
         end
 
         # function adapted according to php: generates an IPv4 Internet network address
