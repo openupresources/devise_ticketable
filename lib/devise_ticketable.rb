@@ -16,6 +16,11 @@ module Devise
   # Define the secret used to generate cookies. Not set by default
   mattr_accessor :auth_tkt_secret
   @@auth_tkt_secret = ''
+  
+  require 'digest'
+  # Define the digest method. Digest::MD5 is used by default
+  mattr_accessor :auth_tkt_digest
+  @@auth_tkt_digest = Digest::MD5
 end
 
 #module DeviseTicketable
