@@ -98,7 +98,14 @@ module Devise
 
         # Digests the password using the configured encryptor.
         module ClassMethods
-          Devise::Models.config(self, :auth_tkt_domain, :auth_tkt_encode, :auth_tkt_ignore_ip, :auth_tkt_secret)
+          Devise::Models.config(self, 
+            :auth_tkt_domain, 
+            :auth_tkt_encode, 
+            :auth_tkt_ignore_ip, 
+            :auth_tkt_secret, 
+            :auth_tkt_digest,
+            :auth_tkt_http_only
+          )
         end
     end
   end
