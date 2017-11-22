@@ -20,7 +20,7 @@ module Devise
   require 'digest'
   # Define the digest method. Digest::MD5 is used by default
   mattr_accessor :auth_tkt_digest
-  @@auth_tkt_digest = Digest::MD5
+  @@auth_tkt_digest = 'MD5'
 
   # Define flage for cookie use
   mattr_accessor :auth_tkt_http_only
