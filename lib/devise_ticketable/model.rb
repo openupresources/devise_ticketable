@@ -1,3 +1,4 @@
+require 'digest'
 require 'devise_ticketable/hooks/ticketable'
 
 module Devise
