@@ -88,6 +88,7 @@ module Devise
 
         def get_digest
           digest = self.class.auth_tkt_digest || 'MD5'
+          puts "Digest:  #{digest}"
           "::Digest::#{digest}".constantize
         end
 
