@@ -88,8 +88,7 @@ module Devise
 
         def get_digest
           digest = self.class.auth_tkt_digest || 'MD5'
-          puts "Digest:  #{digest}"
-          "::Digest::#{digest}".constantize
+          "Digest::#{digest}".constantize
         end
 
         # function adapted according to php: generates an IPv4 Internet network address
